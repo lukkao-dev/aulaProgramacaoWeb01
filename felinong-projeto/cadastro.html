@@ -1,129 +1,127 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - FELINONG</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - FELINONG</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Menu hambúrguer inline para teste rápido */
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      display: block;
+      border-radius: 2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 576px) {
+      .menu-toggle { display: flex; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #034078;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        padding: 16px;
+        border-radius: 0 0 8px 8px;
+      }
+      nav ul.active { display: flex; }
+      nav a { padding: 8px 16px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Cabeçalho da página -->
-    <header> 
-        <!-- Título principal da página -->
-        <h1>Projetos Sociais - FELINONG</h1>
+  <header>
+    <h1>Projetos Sociais - FELINONG</h1>
 
-        <!-- Navegação principal -->
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li> <!-- Link para página inicial -->
-                <li><a href="projetos.html">Projetos</a></li> <!-- Link para página de projetos -->
-                <li><a href="cadastro.html">Cadastro</a></li> <!-- Link para página de cadastro -->
-            </ul>
-        </nav>
-    </header>
+    <!-- Botão Menu Hambúrguer -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-    <!-- Conteúdo principal da página -->
-    <main>
-        <!-- Formulário de cadastro de voluntários -->
-        <form>
+    <nav>
+      <ul id="nav-list">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+      </ul>
+    </nav>
+  </header>
 
-            <!-- Agrupamento de campos de dados pessoais -->
-            <fieldset>
-                <legend>Dados Pessoais</legend>
+  <main>
+    <form>
+      <fieldset>
+        <legend>Dados Pessoais</legend>
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required placeholder="exemplo@email.com">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" maxlength="15">
+        <label for="nascimento">Data de Nascimento:</label>
+        <input type="date" id="nascimento" name="nascimento" required>
+      </fieldset>
 
-                <!-- Campo para Nome Completo -->
-                <label for="nome">Nome Completo:</label>
-                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+      <fieldset>
+        <legend>Endereço</legend>
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, complemento">
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" required placeholder="00000-000" maxlength="9">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" required>
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+          <option value="">Selecione</option>
+          <option value="SP">SP</option>
+          <option value="RJ">RJ</option>
+          <option value="MG">MG</option>
+          <option value="RS">RS</option>
+          <option value="PR">PR</option>
+          <option value="SC">SC</option>
+          <option value="BA">BA</option>
+          <option value="PE">PE</option>
+          <option value="CE">CE</option>
+          <option value="DF">DF</option>
+        </select>
+      </fieldset>
 
-                <!-- Campo para E-mail -->
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required placeholder="exemplo@email.com">
+      <input type="submit" value="Enviar Cadastro">
+    </form>
+  </main>
 
-                <!-- Campo para CPF -->
-                <label for="cpf">CPF:</label>
-                <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
+  <script>
+    // Script para abrir/fechar menu mobile
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
 
-                <!-- Campo para Telefone -->
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" maxlength="15">
-
-                <!-- Campo para Data de Nascimento -->
-                <label for="nascimento">Data de Nascimento:</label>
-                <input type="date" id="nascimento" name="nascimento" required>
-            </fieldset>
-
-            <!-- Agrupamento de campos de endereço -->
-            <fieldset>
-                <legend>Endereço</legend>
-
-                <!-- Campo para Endereço -->
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, complemento">
-
-                <!-- Campo para CEP -->
-                <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" required placeholder="00000-000" maxlength="9">
-
-                <!-- Campo para Cidade -->
-                <label for="cidade">Cidade:</label>
-                <input type="text" id="cidade" name="cidade" required>
-
-                <!-- Campo para Estado -->
-                <label for="estado">Estado:</label>
-                <select id="estado" name="estado" required>
-                    <option value="">Selecione</option>
-                    <option value="SP">SP</option>
-                    <option value="RJ">RJ</option>
-                    <option value="MG">MG</option>
-                    <option value="RS">RS</option>
-                    <option value="PR">PR</option>
-                    <option value="SC">SC</option>
-                    <option value="BA">BA</option>
-                    <option value="PE">PE</option>
-                    <option value="CE">CE</option>
-                    <option value="DF">DF</option>
-                </select>
-            </fieldset>
-
-            <!-- Botão para enviar o formulário -->
-            <input type="submit" value="Enviar Cadastro">
-        </form>
-    </main>
-
-    <!-- Rodapé da página -->
-    <footer>
-        <p>&copy; 2025 ONG FELINONG. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- Script para aplicar máscaras em campos do formulário -->
-    <script>
-        // Máscara CPF: adiciona pontos e traço automaticamente
-        const cpf = document.getElementById('cpf');
-        cpf.addEventListener('input', () => {
-            let valor = cpf.value.replace(/\D/g, ''); // Remove tudo que não é número
-            valor = valor.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona ponto após 3 dígitos
-            valor = valor.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona segundo ponto
-            valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Adiciona traço antes dos dois últimos dígitos
-            cpf.value = valor; // Atualiza o campo
-        });
-
-        // Máscara Telefone: adiciona parênteses e traço automaticamente
-        const telefone = document.getElementById('telefone');
-        telefone.addEventListener('input', () => {
-            let valor = telefone.value.replace(/\D/g, ''); // Remove tudo que não é número
-            valor = valor.replace(/^(\d{2})(\d)/g, '($1) $2'); // Adiciona parênteses no DDD
-            valor = valor.replace(/(\d{5})(\d{4})$/, '$1-$2'); // Adiciona traço no final
-            telefone.value = valor; // Atualiza o campo
-        });
-
-        // Máscara CEP: adiciona traço automaticamente
-        const cep = document.getElementById('cep');
-        cep.addEventListener('input', () => {
-            let valor = cep.value.replace(/\D/g, ''); // Remove tudo que não é número
-            valor = valor.replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona traço após 5 dígitos
-            cep.value = valor; // Atualiza o campo
-        });
-    </script>
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
 
 </body>
 </html>

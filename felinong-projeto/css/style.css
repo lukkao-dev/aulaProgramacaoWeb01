@@ -1,0 +1,266 @@
+/* =============================== Design System - Variáveis CSS ============================== */
+:root {
+    --cor-primaria: #034078;       /* Cor principal do site */
+    --cor-secundaria: #d0e7ff;     /* Cor secundária */
+    --cor-terciaria: #ff9f1c;      /* Cor de destaque */
+    --cor-quaternaria: #ffbf69;    /* Outra cor de destaque */
+    --cor-neutra-clara: #f5f5f5;   /* Fundo claro neutro */
+    --cor-neutra-escura: #333333;  /* Cor do texto principal */
+    --cor-alerta: #ff4d4d;         /* Cor de alerta/erro */
+    --cor-sucesso: #2ecc71;        /* Cor de sucesso */
+
+    --fonte-principal: 'Arial', sans-serif;  /* Fonte do corpo */
+    --fonte-titulo: 'Helvetica', sans-serif; /* Fonte dos títulos */
+
+    --fs-h1: 48px;    /* Tamanho do H1 */
+    --fs-h2: 36px;    /* Tamanho do H2 */
+    --fs-h3: 28px;    /* Tamanho do H3 */
+    --fs-p: 16px;     /* Tamanho do parágrafo */
+    --fs-small: 14px; /* Tamanho pequeno */
+
+    --space-xs: 8px;   /* Espaçamento extra pequeno */
+    --space-sm: 16px;  /* Espaçamento pequeno */
+    --space-md: 24px;  /* Espaçamento médio */
+    --space-lg: 32px;  /* Espaçamento grande */
+    --space-xl: 48px;  /* Espaçamento extra grande */
+    --space-xxl: 64px; /* Espaçamento gigante */
+}
+
+/* =============================== Reset básico ============================== */
+* {
+    margin: 0;            /* Remove margens padrão */
+    padding: 0;           /* Remove padding padrão */
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+}
+
+body {
+    font-family: var(--fonte-principal);  /* Define fonte do corpo */
+    background-color: var(--cor-neutra-clara); /* Fundo neutro claro */
+    color: var(--cor-neutra-escura);      /* Cor do texto */
+    line-height: 1.6;                      /* Altura de linha */
+}
+
+/* =============================== Layout principal com Grid ============================== */
+main {
+    display: grid;                         /* Ativa grid layout */
+    grid-template-columns: repeat(12, 1fr); /* 12 colunas iguais */
+    gap: var(--space-lg);                   /* Espaçamento entre colunas */
+    padding: var(--space-lg);               /* Padding interno */
+}
+
+/* =============================== Cabeçalho e Navegação ============================== */
+header {
+    background-color: var(--cor-primaria); /* Fundo do cabeçalho */
+    color: #fff;                            /* Cor do texto */
+    padding: var(--space-md);               /* Padding interno */
+    position: relative;                     /* Para posicionamento de elementos filhos absolutos */
+}
+
+header h1 {
+    font-family: var(--fonte-titulo);      /* Fonte do título */
+    font-size: var(--fs-h1);               /* Tamanho do título */
+    margin-bottom: var(--space-sm);        /* Espaço abaixo do título */
+}
+
+/* Navegação horizontal e submenu dropdown */
+nav ul {
+    list-style: none;                       /* Remove bullets */
+    display: flex;                          /* Flex horizontal */
+    gap: var(--space-md);                   /* Espaço entre itens */
+    flex-wrap: wrap;                        /* Quebra de linha se necessário */
+}
+
+nav li {
+    position: relative;                     /* Para submenu absoluto */
+}
+
+nav a {
+    color: #fff;                            /* Cor do link */
+    text-decoration: none;                  /* Remove sublinhado */
+    padding: var(--space-xs) var(--space-sm); /* Padding interno */
+    border-radius: 4px;                     /* Bordas arredondadas */
+    transition: background 0.3s;            /* Transição suave */
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: var(--cor-terciaria); /* Fundo ao passar o mouse */
+}
+
+/* Submenu dropdown */
+nav li ul {
+    display: none;                          /* Inicialmente escondido */
+    position: absolute;                     /* Posicionamento absoluto */
+    top: 100%;                              /* Logo abaixo do pai */
+    left: 0;                                /* Alinhamento à esquerda */
+    background-color: var(--cor-primaria); /* Fundo do submenu */
+    list-style: none;                       /* Sem bullets */
+    padding: var(--space-xs) 0;             /* Padding vertical */
+    min-width: 150px;                       /* Largura mínima */
+    border-radius: 4px;                     /* Bordas arredondadas */
+    z-index: 10;                            /* Fica acima de outros elementos */
+}
+
+nav li:hover ul,
+nav li:focus-within ul {
+    display: block;                         /* Mostra submenu ao hover/focus */
+}
+
+nav li ul li a {
+    display: block;                         /* Link ocupa linha inteira */
+    padding: var(--space-xs) var(--space-sm); /* Padding interno */
+}
+
+/* Menu hambúrguer mobile */
+.menu-toggle {
+    display: none;                           /* Esconde por padrão */
+    position: absolute;                      /* Posição absoluta */
+    top: var(--space-md);                     /* Distância do topo */
+    right: var(--space-md);                   /* Distância da direita */
+    flex-direction: column;                  /* Colunas empilhadas */
+    gap: 5px;                                /* Espaço entre barras */
+    cursor: pointer;                         /* Cursor de clique */
+}
+
+.menu-toggle span {
+    width: 25px;                             /* Largura da barra */
+    height: 3px;                             /* Altura da barra */
+    background-color: #fff;                  /* Cor da barra */
+    display: block;                          /* Necessário para altura/largura */
+    border-radius: 2px;                      /* Bordas arredondadas */
+}
+
+/* =============================== Seções e Conteúdo ============================== */
+section {
+    grid-column: span 12;                    /* Ocupa todas as colunas */
+    background-color: #fff;                  /* Fundo branco */
+    padding: var(--space-md);                /* Padding interno */
+    margin-bottom: var(--space-lg);          /* Espaço abaixo da seção */
+    border-radius: 8px;                      /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Sombra leve */
+}
+
+h2 {
+    font-size: var(--fs-h2);                 /* Tamanho do H2 */
+    margin-bottom: var(--space-sm);          /* Espaço abaixo do H2 */
+}
+
+h3 {
+    font-size: var(--fs-h3);                 /* Tamanho do H3 */
+    margin-bottom: var(--space-sm);          /* Espaço abaixo do H3 */
+}
+
+p {
+    font-size: var(--fs-p);                  /* Tamanho do parágrafo */
+    margin-bottom: var(--space-md);          /* Espaço abaixo do parágrafo */
+}
+
+ul {
+    margin-bottom: var(--space-md);          /* Espaço abaixo da lista */
+    padding-left: var(--space-lg);           /* Espaço à esquerda */
+}
+
+/* Imagens responsivas */
+section img,
+.card img {
+    max-width: 100%;                          /* Largura máxima da imagem */
+    height: auto;                             /* Mantém proporção */
+    margin-bottom: var(--space-md);           /* Espaço abaixo da imagem */
+    border-radius: 8px;                       /* Bordas arredondadas */
+}
+
+/* =============================== Formulários ============================== */
+form {
+    display: grid;                             /* Grid interno */
+    gap: var(--space-md);                       /* Espaçamento entre campos */
+    grid-column: span 12;                      /* Ocupa todas as colunas */
+}
+
+fieldset {
+    border: 1px solid var(--cor-primaria);    /* Borda colorida */
+    border-radius: 8px;                        /* Bordas arredondadas */
+    padding: var(--space-md);                  /* Padding interno */
+}
+
+legend {
+    font-weight: bold;                          /* Negrito */
+    padding: 0 var(--space-sm);                 /* Padding horizontal */
+}
+
+label {
+    display: block;                             /* Label ocupa linha inteira */
+    margin-bottom: var(--space-xs);            /* Espaço abaixo do label */
+    font-weight: 500;                           /* Peso da fonte */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+
+select {
+    width: 100%;                                /* Largura total */
+    padding: var(--space-sm);                   /* Padding interno */
+    margin-bottom: var(--space-md);             /* Espaço abaixo */
+    border: 1px solid #ccc;                     /* Borda cinza */
+    border-radius: 4px;                         /* Bordas arredondadas */
+}
+
+input[type="submit"] {
+    background-color: var(--cor-primaria);     /* Fundo do botão */
+    color: #fff;                                /* Cor do texto */
+    padding: var(--space-sm) var(--space-lg);  /* Padding interno */
+    border: none;                               /* Sem borda */
+    border-radius: 4px;                         /* Bordas arredondadas */
+    font-size: var(--fs-p);                     /* Tamanho do texto */
+    cursor: pointer;                            /* Cursor de clique */
+    transition: background 0.3s;                /* Transição suave */
+}
+
+input[type="submit"]:hover {
+    background-color: var(--cor-terciaria);    /* Cor ao passar mouse */
+}
+
+/* =============================== Rodapé ============================== */
+footer {
+    text-align: center;                         /* Centraliza texto */
+    padding: var(--space-md);                   /* Padding interno */
+    background-color: var(--cor-primaria);     /* Fundo do rodapé */
+    color: #fff;                                /* Cor do texto */
+}
+
+/* =============================== Sistema de Cards ============================== */
+.card {
+    display: flex;                              /* Flex container */
+    flex-direction: column;                     /* Empilha verticalmente */
+    background-color: #fff;                     /* Fundo branco */
+    border-radius: 8px;                         /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);     /* Sombra leve */
+    overflow: hidden;                           /* Esconde overflow */
+    transition: transform 0.3s;                 /* Animação suave */
+}
+
+.card:hover {
+    transform: translateY(-5px);               /* Levanta card ao hover */
+}
+
+/* =============================== Responsividade ============================== */
+@media (max-width: 1200px) {
+    main { grid-template-columns: repeat(8, 1fr); }  /* Reduz colunas para 8 */
+}
+@media (max-width: 992px) {
+    main { grid-template-columns: repeat(6, 1fr); }  /* Reduz colunas para 6 */
+}
+@media (max-width: 768px) {
+    main { grid-template-columns: repeat(4, 1fr); }  /* Reduz colunas para 4 */
+}
+@media (max-width: 576px) {
+    main { grid-template-columns: repeat(2, 1fr); }  /* Reduz colunas para 2 */
+    nav ul { flex-direction: column; }              /* Menu vertical */
+    .menu-toggle { display: flex; }                /* Exibe botão hambúrguer */
+}
+@media (max-width: 400px) {
+    main { grid-template-columns: repeat(1, 1fr); } /* Coluna única */
+    header h1 { font-size: 32px; }                 /* Reduz título */
+}
+/* =============================== Fim do CSS ============================== */

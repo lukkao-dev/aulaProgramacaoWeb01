@@ -1,26 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Define a codificação de caracteres -->
   <meta charset="UTF-8">
-
-  <!-- Permite que a página seja responsiva em dispositivos móveis -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Título da página, aparece na aba do navegador -->
   <title>Projetos Sociais - FELINONG</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Menu hambúrguer inline */
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      display: block;
+      border-radius: 2px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 576px) {
+      .menu-toggle { display: flex; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #034078;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        padding: 16px;
+        border-radius: 0 0 8px 8px;
+      }
+      nav ul.active { display: flex; }
+      nav a { padding: 8px 16px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Cabeçalho da página -->
+  <!-- Cabeçalho -->
   <header>
-    <!-- Título principal do site -->
     <h1>Projetos Sociais - FELINONG</h1>
 
-    <!-- Menu de navegação -->
+    <!-- Botão Menu Hambúrguer -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <nav>
-      <ul>
-        <!-- Links para as páginas do site -->
+      <ul id="nav-list">
         <li><a href="index.html">Início</a></li>
         <li><a href="projetos.html">Projetos</a></li>
         <li><a href="cadastro.html">Cadastro</a></li>
@@ -28,55 +70,37 @@
     </nav>
   </header>
 
-  <!-- Conteúdo principal da página -->
   <main>
-
-    <!-- Seção sobre voluntariado -->
+    <!-- Seção Voluntariado -->
     <section id="voluntariado">
-      <!-- Título da seção -->
       <h2>Voluntariado</h2>
-
-      <!-- Texto explicativo -->
       <p>Ser voluntário na FELINONG é uma oportunidade única de fazer a diferença na vida de gatos resgatados.</p>
-
-      <!-- Lista de atividades dos voluntários -->
       <ul>
         <li>Alimentação e cuidados diários</li>
         <li>Limpeza e higienização</li>
         <li>Transporte para clínicas veterinárias</li>
         <li>Eventos de adoção e socialização</li>
       </ul>
-
-      <!-- Imagem ilustrativa do voluntariado -->
       <figure>
         <img src="imagens/cuidadordegato.png" alt="Voluntário cuidando de um gato" width="300">
         <figcaption>Um de nossos voluntários dedicados.</figcaption>
       </figure>
     </section>
 
-    <!-- Seção sobre doações -->
+    <!-- Seção Doações -->
     <section id="doacoes">
-      <!-- Título da seção -->
       <h2>Como Doar</h2>
-
-      <!-- Texto explicativo -->
       <p>Sua doação é essencial! Aceitamos doações financeiras e materiais:</p>
-
-      <!-- Lista de itens doáveis -->
       <ul>
         <li>Ração e alimentos</li>
         <li>Medicamentos</li>
         <li>Caixas de transporte</li>
         <li>Produtos de limpeza</li>
       </ul>
-
-      <!-- Imagem ilustrativa das doações -->
       <figure>
         <img src="imagens/doandoracao.png" alt="Pessoa doando ração para gatos" width="300">
         <figcaption>Doações sempre salvam vidas.</figcaption>
       </figure>
-
-      <!-- Subtítulo e lista de formas de doação -->
       <h3>Formas de doação:</h3>
       <ul>
         <li>PIX: <strong>felinong@ong.org</strong></li>
@@ -85,22 +109,26 @@
       </ul>
     </section>
 
-    <!-- Seção sobre resgates recentes -->
+    <!-- Resgates Recentes -->
     <section id="resgates">
-      <!-- Título da seção -->
       <h2>Resgates Recentes</h2>
-
-      <!-- Imagem ilustrativa dos gatos resgatados -->
       <img src="imagens/gatosresgatados.png" alt="Gatos sendo resgatados dentro de uma caixa" width="300">
-
-      <!-- Texto explicativo sobre os resgates -->
       <p>
         Esses gatinhos foram recentemente resgatados e agora estão recebendo todo o cuidado necessário. 
         Em breve, estarão disponíveis para adoção responsável!
       </p>
     </section>
-
   </main>
+
+  <script>
+    // Script para abrir/fechar menu mobile
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
 
 </body>
 </html>
