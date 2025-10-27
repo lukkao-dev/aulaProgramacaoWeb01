@@ -1,266 +1,428 @@
-/* =============================== Design System - Variáveis CSS ============================== */
+/* ===========================
+   🎨 VARIÁVEIS DO DESIGN SYSTEM
+   =========================== */
 :root {
-    --cor-primaria: #034078;       /* Cor principal do site */
-    --cor-secundaria: #d0e7ff;     /* Cor secundária */
-    --cor-terciaria: #ff9f1c;      /* Cor de destaque */
-    --cor-quaternaria: #ffbf69;    /* Outra cor de destaque */
-    --cor-neutra-clara: #f5f5f5;   /* Fundo claro neutro */
-    --cor-neutra-escura: #333333;  /* Cor do texto principal */
-    --cor-alerta: #ff4d4d;         /* Cor de alerta/erro */
-    --cor-sucesso: #2ecc71;        /* Cor de sucesso */
+  --cor-primaria: #0a74da;        /* Azul principal FELINONG */
+  --cor-secundaria: #7ab8f5;      /* Azul claro */
+  --cor-terciaria: #ff9f1c;       /* Cor de destaque */
+  --cor-quaternaria: #ffbf69;     /* Cor complementar */
+  --cor-neutra-clara: #d0e7ff;    /* Fundo azul bebê */
+  --cor-neutra-escura: #034078;   /* Azul escuro do texto */
+  --cor-alerta: #ff4d4d;          /* Vermelho para alertas */
+  --cor-sucesso: #2ecc71;         /* Verde de sucesso */
 
-    --fonte-principal: 'Arial', sans-serif;  /* Fonte do corpo */
-    --fonte-titulo: 'Helvetica', sans-serif; /* Fonte dos títulos */
+  --fonte-principal: 'Anja Eliane', sans-serif;
+  --fonte-titulo: 'Vicky Chow', cursive;
 
-    --fs-h1: 48px;    /* Tamanho do H1 */
-    --fs-h2: 36px;    /* Tamanho do H2 */
-    --fs-h3: 28px;    /* Tamanho do H3 */
-    --fs-p: 16px;     /* Tamanho do parágrafo */
-    --fs-small: 14px; /* Tamanho pequeno */
+  --fs-h1: 48px;
+  --fs-h2: 36px;
+  --fs-h3: 28px;
+  --fs-p: 18px;
+  --fs-small: 14px;
 
-    --space-xs: 8px;   /* Espaçamento extra pequeno */
-    --space-sm: 16px;  /* Espaçamento pequeno */
-    --space-md: 24px;  /* Espaçamento médio */
-    --space-lg: 32px;  /* Espaçamento grande */
-    --space-xl: 48px;  /* Espaçamento extra grande */
-    --space-xxl: 64px; /* Espaçamento gigante */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-xxl: 64px;
 }
 
-/* =============================== Reset básico ============================== */
-* {
-    margin: 0;            /* Remove margens padrão */
-    padding: 0;           /* Remove padding padrão */
-    box-sizing: border-box; /* Inclui padding e border na largura total */
+/* ===========================
+   🔄 ANIMAÇÕES DE FUNDO E TÍTULOS
+   =========================== */
+@keyframes moverFundo {
+  0% { background-position: 0 0; }
+  50% { background-position: 0 100px; }
+  100% { background-position: 0 0; }
 }
 
+@keyframes balancar {
+  0% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+  100% { transform: rotate(-1deg); }
+}
+
+/* ===========================
+   🖋️ FONTES PERSONALIZADAS
+   =========================== */
+@font-face {
+  font-family: 'Vicky Chow';
+  src: url('../fonts/VickyChow-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Anja Eliane';
+  src: url('../fonts/AnjaEliane-Regular.ttf') format('truetype');
+}
+
+/* ===========================
+   🐾 FUNDO COM PATINHAS ANIMADAS
+   =========================== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../imagens/patinhadegato.png');
+  background-repeat: repeat;
+  background-size: 800px;
+  opacity: 0.5; /* leve transparência */
+  z-index: -1; /* fica atrás do conteúdo */
+  animation: moverFundo 30s linear infinite;
+}
+
+/* ===========================
+   ⚙️ ESTILOS GERAIS DO SITE
+   =========================== */
 body {
-    font-family: var(--fonte-principal);  /* Define fonte do corpo */
-    background-color: var(--cor-neutra-clara); /* Fundo neutro claro */
-    color: var(--cor-neutra-escura);      /* Cor do texto */
-    line-height: 1.6;                      /* Altura de linha */
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-neutra-clara);
+  color: var(--cor-neutra-escura);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* =============================== Layout principal com Grid ============================== */
+/* ===========================
+   🏗️ LAYOUT PRINCIPAL (GRID)
+   =========================== */
 main {
-    display: grid;                         /* Ativa grid layout */
-    grid-template-columns: repeat(12, 1fr); /* 12 colunas iguais */
-    gap: var(--space-lg);                   /* Espaçamento entre colunas */
-    padding: var(--space-lg);               /* Padding interno */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* =============================== Cabeçalho e Navegação ============================== */
+/* ===========================
+   🎆 TÍTULOS COM EFEITO NEON
+   =========================== */
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  color: #fff;
+  text-shadow: 0 0 8px #87cefa, 0 0 20px #0a74da;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+h1:hover, h2:hover, h3:hover {
+  transform: scale(1.05) rotate(1deg);
+  text-shadow: 0 0 8px #2a72a9, 0 0 16px #107deb, 0 0 24px #0a74da;
+}
+
+/* ===========================
+   🧭 CABEÇALHO E NAVEGAÇÃO
+   =========================== */
 header {
-    background-color: var(--cor-primaria); /* Fundo do cabeçalho */
-    color: #fff;                            /* Cor do texto */
-    padding: var(--space-md);               /* Padding interno */
-    position: relative;                     /* Para posicionamento de elementos filhos absolutos */
+  background-color: var(--cor-primaria);
+  text-align: center;
+  padding: var(--space-md) 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-header h1 {
-    font-family: var(--fonte-titulo);      /* Fonte do título */
-    font-size: var(--fs-h1);               /* Tamanho do título */
-    margin-bottom: var(--space-sm);        /* Espaço abaixo do título */
+header h1#titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 5em;
+  color: #fff;
+  margin: 0 0 20px 0;
+  animation: balancar 3s ease-in-out infinite;
+  text-shadow: 0 0 10px #00eaff, 0 0 30px #00bfff, 0 0 60px #0064ff;
+  transition: transform 0.4s ease, text-shadow 0.4s ease;
 }
 
-/* Navegação horizontal e submenu dropdown */
+header h1#titulo:hover {
+  transform: scale(1.15);
+  text-shadow: 0 0 20px #00f7ff, 0 0 60px #00aaff, 0 0 100px #007fff;
+}
+
+/* ===== Navegação ===== */
 nav ul {
-    list-style: none;                       /* Remove bullets */
-    display: flex;                          /* Flex horizontal */
-    gap: var(--space-md);                   /* Espaço entre itens */
-    flex-wrap: wrap;                        /* Quebra de linha se necessário */
-}
-
-nav li {
-    position: relative;                     /* Para submenu absoluto */
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 nav a {
-    color: #fff;                            /* Cor do link */
-    text-decoration: none;                  /* Remove sublinhado */
-    padding: var(--space-xs) var(--space-sm); /* Padding interno */
-    border-radius: 4px;                     /* Bordas arredondadas */
-    transition: background 0.3s;            /* Transição suave */
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: var(--fonte-titulo);
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 8px #87cefa;
 }
 
-nav a:hover,
-nav a:focus {
-    background-color: var(--cor-terciaria); /* Fundo ao passar o mouse */
+nav a:hover {
+  transform: scale(1.2) rotate(5deg);
+  background-color: var(--cor-secundaria);
 }
 
-/* Submenu dropdown */
-nav li ul {
-    display: none;                          /* Inicialmente escondido */
-    position: absolute;                     /* Posicionamento absoluto */
-    top: 100%;                              /* Logo abaixo do pai */
-    left: 0;                                /* Alinhamento à esquerda */
-    background-color: var(--cor-primaria); /* Fundo do submenu */
-    list-style: none;                       /* Sem bullets */
-    padding: var(--space-xs) 0;             /* Padding vertical */
-    min-width: 150px;                       /* Largura mínima */
-    border-radius: 4px;                     /* Bordas arredondadas */
-    z-index: 10;                            /* Fica acima de outros elementos */
-}
-
-nav li:hover ul,
-nav li:focus-within ul {
-    display: block;                         /* Mostra submenu ao hover/focus */
-}
-
-nav li ul li a {
-    display: block;                         /* Link ocupa linha inteira */
-    padding: var(--space-xs) var(--space-sm); /* Padding interno */
-}
-
-/* Menu hambúrguer mobile */
-.menu-toggle {
-    display: none;                           /* Esconde por padrão */
-    position: absolute;                      /* Posição absoluta */
-    top: var(--space-md);                     /* Distância do topo */
-    right: var(--space-md);                   /* Distância da direita */
-    flex-direction: column;                  /* Colunas empilhadas */
-    gap: 5px;                                /* Espaço entre barras */
-    cursor: pointer;                         /* Cursor de clique */
-}
-
-.menu-toggle span {
-    width: 25px;                             /* Largura da barra */
-    height: 3px;                             /* Altura da barra */
-    background-color: #fff;                  /* Cor da barra */
-    display: block;                          /* Necessário para altura/largura */
-    border-radius: 2px;                      /* Bordas arredondadas */
-}
-
-/* =============================== Seções e Conteúdo ============================== */
+/* ===========================
+   📦 SEÇÕES DE CONTEÚDO
+   =========================== */
 section {
-    grid-column: span 12;                    /* Ocupa todas as colunas */
-    background-color: #fff;                  /* Fundo branco */
-    padding: var(--space-md);                /* Padding interno */
-    margin-bottom: var(--space-lg);          /* Espaço abaixo da seção */
-    border-radius: 8px;                      /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Sombra leve */
+  background-color: rgba(10, 116, 218, 0.85); /* azul translúcido */
+  color: white;
+  grid-column: span 12;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  padding: var(--space-lg);
+  text-align: center;
+  margin-bottom: var(--space-lg);
 }
 
-h2 {
-    font-size: var(--fs-h2);                 /* Tamanho do H2 */
-    margin-bottom: var(--space-sm);          /* Espaço abaixo do H2 */
+section img {
+  display: block;
+  margin: 20px auto;
+  max-width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-h3 {
-    font-size: var(--fs-h3);                 /* Tamanho do H3 */
-    margin-bottom: var(--space-sm);          /* Espaço abaixo do H3 */
+/* ===========================
+   🐱 LISTAS DE DOAÇÕES / TAREFAS
+   =========================== */
+.lista-doacao li {
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  margin-left: 30px;
 }
 
-p {
-    font-size: var(--fs-p);                  /* Tamanho do parágrafo */
-    margin-bottom: var(--space-md);          /* Espaço abaixo do parágrafo */
-}
-
-ul {
-    margin-bottom: var(--space-md);          /* Espaço abaixo da lista */
-    padding-left: var(--space-lg);           /* Espaço à esquerda */
-}
-
-/* Imagens responsivas */
-section img,
-.card img {
-    max-width: 100%;                          /* Largura máxima da imagem */
-    height: auto;                             /* Mantém proporção */
-    margin-bottom: var(--space-md);           /* Espaço abaixo da imagem */
-    border-radius: 8px;                       /* Bordas arredondadas */
-}
-
-/* =============================== Formulários ============================== */
+/* ===========================
+   📋 FORMULÁRIOS
+   =========================== */
 form {
-    display: grid;                             /* Grid interno */
-    gap: var(--space-md);                       /* Espaçamento entre campos */
-    grid-column: span 12;                      /* Ocupa todas as colunas */
+  background-color: rgba(10, 116, 218, 0.9);
+  padding: var(--space-lg);
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
 fieldset {
-    border: 1px solid var(--cor-primaria);    /* Borda colorida */
-    border-radius: 8px;                        /* Bordas arredondadas */
-    padding: var(--space-md);                  /* Padding interno */
+  border: 2px solid var(--cor-primaria);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px;
 }
 
 legend {
-    font-weight: bold;                          /* Negrito */
-    padding: 0 var(--space-sm);                 /* Padding horizontal */
+  font-weight: bold;
+  color: var(--cor-neutra-escura);
+  background: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
 }
 
 label {
-    display: block;                             /* Label ocupa linha inteira */
-    margin-bottom: var(--space-xs);            /* Espaço abaixo do label */
-    font-weight: 500;                           /* Peso da fonte */
+  display: block;
+  text-align: left;
+  margin-top: 10px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="date"],
-
-select {
-    width: 100%;                                /* Largura total */
-    padding: var(--space-sm);                   /* Padding interno */
-    margin-bottom: var(--space-md);             /* Espaço abaixo */
-    border: 1px solid #ccc;                     /* Borda cinza */
-    border-radius: 4px;                         /* Bordas arredondadas */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid var(--cor-secundaria);
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
+/* ===== Botão de envio ===== */
 input[type="submit"] {
-    background-color: var(--cor-primaria);     /* Fundo do botão */
-    color: #fff;                                /* Cor do texto */
-    padding: var(--space-sm) var(--space-lg);  /* Padding interno */
-    border: none;                               /* Sem borda */
-    border-radius: 4px;                         /* Bordas arredondadas */
-    font-size: var(--fs-p);                     /* Tamanho do texto */
-    cursor: pointer;                            /* Cursor de clique */
-    transition: background 0.3s;                /* Transição suave */
+  background-color: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  font-size: 1.1em;
+  font-family: var(--fonte-titulo);
+  cursor: pointer;
+  padding: 15px 25px;
+  border-radius: 90px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.5);
 }
 
 input[type="submit"]:hover {
-    background-color: var(--cor-terciaria);    /* Cor ao passar mouse */
+  background-color: var(--cor-secundaria);
+  transform: scale(1.1) rotate(-3deg);
 }
 
-/* =============================== Rodapé ============================== */
+/* ===========================
+   🐾 BOTÕES DE AÇÕES (Início, Projeto, Cadastro)
+   =========================== */
+.acoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.acao-botao {
+  background-color: var(--cor-primaria);
+  color: white;
+  font-family: var(--fonte-titulo);
+  font-weight: 1000;
+  font-size: 1.2em;
+  padding: 20px 25px;
+  border: none;
+  border-radius: 90px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.8);
+}
+
+.acao-botao:hover {
+  background-color: var(--cor-secundaria);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+}
+
+/* ===========================
+   🦶 RODAPÉ
+   =========================== */
 footer {
-    text-align: center;                         /* Centraliza texto */
-    padding: var(--space-md);                   /* Padding interno */
-    background-color: var(--cor-primaria);     /* Fundo do rodapé */
-    color: #fff;                                /* Cor do texto */
+  background-color: var(--cor-primaria);
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  box-shadow: 0 -4px 6px rgba(0,0,0,0.3);
+  font-weight: bold;
 }
 
-/* =============================== Sistema de Cards ============================== */
-.card {
-    display: flex;                              /* Flex container */
-    flex-direction: column;                     /* Empilha verticalmente */
-    background-color: #fff;                     /* Fundo branco */
-    border-radius: 8px;                         /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);     /* Sombra leve */
-    overflow: hidden;                           /* Esconde overflow */
-    transition: transform 0.3s;                 /* Animação suave */
+p {
+    font-size: 25px; /* aumenta o tamanho das letras dos parágrafos */
 }
 
-.card:hover {
-    transform: translateY(-5px);               /* Levanta card ao hover */
+.lista-doacao {
+    display: flex;
+    flex-direction: column; /* organiza elementos verticalmente */
+    align-items: center;    /* centraliza horizontalmente */
+    text-align: center;     /* centraliza o texto */
+    gap: 20px;              /* espaço entre elementos */
+    padding: 30px;          /* espaçamento interno da section */
 }
 
-/* =============================== Responsividade ============================== */
-@media (max-width: 1200px) {
-    main { grid-template-columns: repeat(8, 1fr); }  /* Reduz colunas para 8 */
+section img {
+    max-width: 100%;        /* garante que a imagem não ultrapasse o container */
+    height: auto;
 }
-@media (max-width: 992px) {
-    main { grid-template-columns: repeat(6, 1fr); }  /* Reduz colunas para 6 */
+
+.missao-section {
+    display: flex;
+    flex-direction: column; /* organiza elementos verticalmente */
+    align-items: center;    /* centraliza horizontalmente */
+    text-align: center;     /* centraliza o texto */
+    gap: 20px;              /* espaço entre elementos */
+    padding: 30px;          /* espaçamento interno da section */
 }
+
+.lista-doacao li {
+    font-size: 20px;        /* aumenta o tamanho das letras dos itens da lista */
+}
+
+/* Fundo com imagem e gatinhos cobrindo toda a página rolável */
+.fundo-com-gatinhos {
+  position: fixed;           
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;             
+  height: auto;                 
+  background-image: url('imagens/fundo.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;                  
+  overflow: hidden;             
+}
+
+/* Cada gatinho */
+.gatinho {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: var(--top);              
+  left: -100px;                 
+  animation-name: passar;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--duration);
+}
+
+/* Animação atravessando a tela */
+@keyframes passar {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100vw); }
+}
+
+/* Flutuação vertical leve */
+.gatinho::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: flutuar 4s ease-in-out infinite alternate;
+}
+
+@keyframes flutuar {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(10px); }
+}
+
+/* ===== Alerta centralizado com fade ===== */
+/* ===== Alerta centralizado com fade ===== */
+.alerta {
+  display: none;                 /* escondido por padrão */
+  position: fixed;               /* fixa na tela mesmo ao rolar */
+  top: 50%;                      /* centraliza verticalmente */
+  left: 50%;                     /* centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* ajusta para o centro exato */
+  background-color: #ffffff;
+  color: #034078;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 25px 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  z-index: 1000;                 /* acima de todo o conteúdo */
+  opacity: 0;                     /* invisível inicialmente */
+  transition: opacity 0.5s ease; /* fade suave */
+}
+
+.alerta.visivel {
+  display: block;
+  opacity: 1;                     /* deixa visível */
+  pointer-events: auto;
+}
+
+
+/* ===========================
+   📱 RESPONSIVIDADE
+   =========================== */
 @media (max-width: 768px) {
-    main { grid-template-columns: repeat(4, 1fr); }  /* Reduz colunas para 4 */
+  main { grid-template-columns: repeat(4, 1fr); }
+  section img { max-width: 80%; }
+  header h1#titulo { font-size: 3em; }
 }
-@media (max-width: 576px) {
-    main { grid-template-columns: repeat(2, 1fr); }  /* Reduz colunas para 2 */
-    nav ul { flex-direction: column; }              /* Menu vertical */
-    .menu-toggle { display: flex; }                /* Exibe botão hambúrguer */
+
+@media (max-width: 480px) {
+  main { grid-template-columns: 1fr; }
+  .acoes { flex-direction: column; }
+  nav a { display: block; margin: 5px 0; }
 }
-@media (max-width: 400px) {
-    main { grid-template-columns: repeat(1, 1fr); } /* Coluna única */
-    header h1 { font-size: 32px; }                 /* Reduz título */
-}
-/* =============================== Fim do CSS ============================== */

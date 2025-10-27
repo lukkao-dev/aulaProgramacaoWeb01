@@ -3,114 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos Sociais - FELINONG</title>
+  <title>FELINONG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- ===== Estilo do alerta ===== -->
   <style>
-    /* Menu hambúrguer inline para teste rápido */
-    .menu-toggle {
-      display: none;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
+    .alerta {
+      display: none; /* escondido por padrão */
+      position: sticky;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      color: #034078;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      padding: 25px 40px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
       z-index: 1000;
+      animation: fadeInOut 3s ease-in-out;
     }
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      display: block;
-      border-radius: 2px;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    @media (max-width: 576px) {
-      .menu-toggle { display: flex; }
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background-color: #034078;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 200px;
-        padding: 16px;
-        border-radius: 0 0 8px 8px;
-      }
-      nav ul.active { display: flex; }
-      nav a { padding: 8px 16px; }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translate(-50%, -60%); }
+      10%, 90% { opacity: 1; transform: translate(-50%, -50%); }
+      100% { opacity: 0; transform: translate(-50%, -40%); }
     }
   </style>
 </head>
 <body>
-
-  <!-- Cabeçalho -->
+  <!-- Header -->
   <header>
-    <h1>Projetos Sociais - FELINONG</h1>
-
-    <!-- Botão Menu Hambúrguer -->
-    <div class="menu-toggle" id="mobile-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
+    <h1 id="titulo">FELINONG</h1>
     <nav>
-      <ul id="nav-list">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
-        <li><a href="cadastro.html">Cadastro</a></li>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#projeto">Projeto</a></li>
+        <li><a href="#cadastro">Cadastro</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <!-- Seção Voluntariado -->
-    <section>
-      <h2>Por que fazer parte da FELINONG?</h2>
-      <p>
-        Ser voluntário na FELINONG é uma oportunidade única de fazer a diferença na vida de gatos resgatados.<br>
-        Nossos voluntários ajudam em diversas áreas: alimentação, limpeza, cuidados médicos, socialização e eventos de adoção.
-      </p>
-      <img src="imagens/voluntarios.png" alt="Voluntários cuidando de gatos">
-      <p>
-        Se você ama animais e deseja contribuir com tempo e carinho, venha fazer parte da nossa equipe de voluntários!
-      </p>
-    </section>
+  <!-- Conteúdo SPA -->
+  <main id="main-content"></main>
 
-    <!-- Seção Doações -->
-    <section>
-      <h2>Como Doar</h2>
-      <p>
-        Sua doação é essencial para continuarmos nosso trabalho!<br>
-        Aceitamos doações financeiras e de materiais como ração, areia, medicamentos e produtos de limpeza.
-      </p>
-      <img src="imagens/doacoes.png" alt="Várias doações">
-      <p>
-        Toda contribuição, por menor que pareça, ajuda a salvar vidas felinas. 💖
-      </p>
-    </section>
-  </main>
 
+  <!-- Fundo com gatinhos animados -->
+<div class="fundo-com-gatinhos">
+  <div class="gatinho" style="--top:2%; --size:40px; --duration:20s; background-image:url('imagens/gatinho1.png');"></div>
+  <div class="gatinho" style="--top:8%; --size:35px; --duration:25s; background-image:url('imagens/gatinho2.png');"></div>
+  <div class="gatinho" style="--top:15%; --size:50px; --duration:30s; background-image:url('imagens/gatinho3.png');"></div>
+  <div class="gatinho" style="--top:22%; --size:45px; --duration:33s; background-image:url('imagens/gatinho1.png');"></div>
+  <div class="gatinho" style="--top:28%; --size:60px; --duration:24s; background-image:url('imagens/gatinho2.png');"></div>
+  <div class="gatinho" style="--top:35%; --size:50px; --duration:26s; background-image:url('imagens/gatinho3.png');"></div>
+  <div class="gatinho" style="--top:42%; --size:55px; --duration:22s; background-image:url('imagens/gatinho1.png');"></div>
+  <div class="gatinho" style="--top:48%; --size:40px; --duration:28s; background-image:url('imagens/gatinho2.png');"></div>
+  <div class="gatinho" style="--top:55%; --size:45px; --duration:25s; background-image:url('imagens/gatinho3.png');"></div>
+  <div class="gatinho" style="--top:62%; --size:60px; --duration:23s; background-image:url('imagens/gatinho1.png');"></div>
+  <div class="gatinho" style="--top:68%; --size:50px; --duration:26s; background-image:url('imagens/gatinho2.png');"></div>
+  <div class="gatinho" style="--top:72%; --size:45px; --duration:27s; background-image:url('imagens/gatinho3.png');"></div>
+  <div class="gatinho" style="--top:78%; --size:55px; --duration:34s; background-image:url('imagens/gatinho1.png');"></div>
+  <div class="gatinho" style="--top:82%; --size:50px; --duration:36s; background-image:url('imagens/gatinho2.png');"></div>
+  <div class="gatinho" style="--top:86%; --size:45px; --duration:22s; background-image:url('imagens/gatinho3.png');"></div>
+  <div class="gatinho" style="--top:90%; --size:60px; --duration:25s; background-image:url('imagens/gatinho1.png');"></div>
+  <div class="gatinho" style="--top:93%; --size:50px; --duration:28s; background-image:url('imagens/gatinho2.png');"></div>
+  <div class="gatinho" style="--top:96%; --size:45px; --duration:23s; background-image:url('imagens/gatinho3.png');"></div>
+  <div class="gatinho" style="--top:98%; --size:55px; --duration:26s; background-image:url('imagens/gatinho1.png');"></div>
+  <div class="gatinho" style="--top:100%; --size:50px; --duration:24s; background-image:url('imagens/gatinho2.png');"></div>
+</div>
+
+
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 ONG FELINONG. Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Alerta central -->
+  <div id="alerta" class="alerta">
+    ✅ Cadastro enviado com sucesso! Obrigado por se juntar à FELINONG 🐾
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/templates.js"></script>
+  <script src="js/script.js"></script>
+
+  <!-- ===== Função do alerta ===== -->
   <script>
-    // Script para abrir/fechar menu mobile
-    const menuToggle = document.getElementById('mobile-menu');
-    const navList = document.getElementById('nav-list');
-
-    menuToggle.addEventListener('click', () => {
-      navList.classList.toggle('active');
-    });
+    function mostrarAlerta() {
+      const alerta = document.getElementById('alerta');
+      alerta.style.display = 'block';
+      setTimeout(() => {
+        alerta.style.display = 'none';
+      }, 3000); // desaparece após 3 segundos
+    }
   </script>
-
 </body>
 </html>
